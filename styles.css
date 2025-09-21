@@ -1,0 +1,1603 @@
+/* ============================================================================
+   СОВРЕМЕННЫЙ МИНИМАЛИСТИЧНЫЙ САЙТ-ПОРТФОЛИО
+   ============================================================================ */
+
+/* Сброс стилей */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Плавный скролл */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Основные стили body */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #2c3e50;
+    background: #ffffff;
+    overflow-x: hidden;
+}
+
+/* Анимированный фон с частицами */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(200, 200, 200, 0.1) 1px, transparent 1px),
+        radial-gradient(circle at 80% 70%, rgba(180, 180, 180, 0.08) 1px, transparent 1px);
+    background-size: 40px 40px, 60px 60px;
+    background-position: 0 0, 30px 30px;
+    z-index: -3;
+    pointer-events: none;
+}
+
+/* Анимированные частицы фона */
+.animated-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(45deg, rgba(52, 152, 219, 0.1), rgba(135, 206, 235, 0.15));
+    animation: float-particles 20s infinite linear;
+}
+
+.particle:nth-child(odd) {
+    background: linear-gradient(45deg, rgba(135, 206, 235, 0.08), rgba(174, 207, 245, 0.12));
+    animation-duration: 25s;
+}
+
+.particle:nth-child(3n) {
+    background: linear-gradient(45deg, rgba(174, 207, 245, 0.06), rgba(52, 152, 219, 0.1));
+    animation-duration: 30s;
+}
+
+@keyframes float-particles {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Дополнительные геометрические элементы */
+.geometric-shapes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.shape {
+    position: absolute;
+    opacity: 0.03;
+    animation: rotate-shape 60s infinite linear;
+}
+
+.shape--circle {
+    border-radius: 50%;
+    border: 4px solid #3498db;
+}
+
+.shape--square {
+    border: 2px solid #87ceeb;
+    transform: rotate(45deg);
+}
+
+.shape--triangle {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 35px solid rgba(52, 152, 219, 0.1);
+}
+
+@keyframes rotate-shape {
+    0% {
+        transform: rotate(0deg) translateX(0px) translateY(0px);
+    }
+    25% {
+        transform: rotate(90deg) translateX(20px) translateY(-10px);
+    }
+    50% {
+        transform: rotate(180deg) translateX(0px) translateY(-20px);
+    }
+    75% {
+        transform: rotate(270deg) translateX(-20px) translateY(-10px);
+    }
+    100% {
+        transform: rotate(360deg) translateX(0px) translateY(0px);
+    }
+}
+
+/* Анимация для частиц от мыши */
+@keyframes mouseParticleFade {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0) translateY(-30px);
+    }
+}
+
+/* Параллакс точки */
+.parallax-dots {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.parallax-dot {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: rgba(52, 152, 219, 0.4);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.4; }
+    25% { transform: translateY(-15px) translateX(10px); opacity: 0.7; }
+    50% { transform: translateY(-8px) translateX(-5px); opacity: 0.5; }
+    75% { transform: translateY(-20px) translateX(15px); opacity: 0.8; }
+}
+
+/* Контейнер */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Заголовки секций */
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #3498db, #87ceeb);
+    border-radius: 2px;
+}
+
+/* Кнопки */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn--primary {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.btn--primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+}
+
+.btn--secondary {
+    background: linear-gradient(135deg, #87ceeb, #5dade2);
+    color: white;
+    box-shadow: 0 4px 15px rgba(135, 206, 235, 0.3);
+}
+
+.btn--secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(135, 206, 235, 0.4);
+}
+
+/* ============================================================================
+   АНИМАЦИИ
+   ============================================================================ */
+
+/* Базовые состояния анимаций */
+.animate-fade-zoom {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-slide-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-slide-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-slide-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-zoom-in {
+    opacity: 0;
+    transform: scale(0.7);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-timeline {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-hover-scale {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-fade-in {
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Активные состояния */
+.animate-fade-zoom.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.animate-slide-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.animate-slide-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.animate-slide-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.animate-zoom-in.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.animate-timeline.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.animate-fade-in.visible {
+    opacity: 1;
+}
+
+/* ============================================================================
+   БЛОК 1: HERO
+   ============================================================================ */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 80px 0;
+    background: linear-gradient(135deg, rgba(248, 250, 252, 0.95), rgba(241, 245, 249, 0.98));
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(52, 152, 219, 0.03), transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(135, 206, 235, 0.02), transparent 50%);
+    pointer-events: none;
+}
+
+.hero .container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.hero__photo {
+    text-align: center;
+}
+
+.hero__image {
+    width: 400px;
+    height: 400px;
+    border-radius: 20px;
+    object-fit: cover;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    border: 3px solid rgba(255, 255, 255, 0.8);
+}
+
+.hero__content {
+    padding-left: 2rem;
+}
+
+.hero__name {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+.hero__title {
+    font-size: 1.5rem;
+    color: #3498db;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.hero__subtitle {
+    font-size: 1.2rem;
+    color: #5a6c7d;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    max-width: 500px;
+}
+
+.hero__actions {
+    margin-bottom: 2rem;
+}
+
+.hero__contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: #5a6c7d;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+    color: #3498db;
+}
+
+.contact-icon {
+    font-size: 1.2rem;
+}
+
+/* ============================================================================
+   БЛОК 2: ОБОМЕ
+   ============================================================================ */
+
+.about {
+    padding: 100px 0;
+    background:linear-gradient(135deg, rgba(248, 250, 252, 0.5), rgba(241, 245, 249, 0.7));
+}
+
+.about__content {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.about__text h2 {
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.about__text p {
+    font-size: 1.1rem;
+    color: #5a6c7d;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
+.about__photo {
+    display: flex;
+    justify-content: center;
+}
+
+.about__image {
+    width: 100%;
+    max-width: 250px;
+    height: 250px;
+    border-radius: 15px;
+    object-fit: cover;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================================================
+   БЛОК 3: НАВЫКИ
+   ============================================================================ */
+
+.skills {
+    padding: 100px 0;
+    background: linear-gradient(135deg, rgba(248, 250, 252, 0.5), rgba(241, 245, 249, 0.7));
+}
+
+.skills__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    perspective: 1000px;
+}
+
+.skill-card {
+    background: white;
+    padding: 2.5rem 2rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(52, 152, 219, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+}
+
+.skill-card__icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.skill-card__image {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid rgba(52, 152, 219, 0.2);
+    transition: all 0.3s ease;
+}
+
+.skill-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.skill-card:hover .skill-card__image {
+    border-color: rgba(52, 152, 219, 0.4);
+    transform: scale(1.1);
+}
+
+.skill-card:hover .skill-card__img {
+    transform: scale(1.2);
+}
+
+.skill-card__title {
+    font-size: 1.2rem;
+    color: #2c3e50;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+/* ============================================================================
+   БЛОК 4: КОМПЕТЕНЦИИ (FLIP КАРТОЧКИ)
+   ============================================================================ */
+
+.competencies {
+    padding: 100px 0;
+    background: linear-gradient(135deg, rgba(248, 250, 252, 0.5), rgba(241, 245, 249, 0.7));
+}
+
+.flip-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    perspective: 1000px;
+}
+
+/* Flip карточка */
+.flip-card {
+    background-color: transparent;
+    width: 100%;
+    height: 280px;
+    perspective: 1000px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Лицевая сторона */
+.flip-card-front {
+    background: linear-gradient(145deg, #ffffff, #f8fafc);
+    border: 1px solid rgba(52, 152, 219, 0.1);
+    color: #2c3e50;
+}
+
+/* Обратная сторона */
+.flip-card-back {
+    background: linear-gradient(145deg, #3498db, #2980b9);
+    color: white;
+    transform: rotateY(180deg);
+    padding: 1.5rem;
+}
+
+.flip-card__icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.flip-card__image {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid rgba(52, 152, 219, 0.2);
+    transition: all 0.3s ease;
+}
+
+.flip-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.flip-card:hover .flip-card__image {
+    border-color: rgba(52, 152, 219, 0.4);
+    transform: scale(1.1);
+}
+
+.flip-card:hover .flip-card__img {
+    transform: scale(1.2);
+}
+
+.flip-card__title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin: 0;
+}
+
+.flip-card-back h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+    color: white;
+}
+
+.flip-card-back p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.95);
+    text-align: left;
+}
+
+/* Эффекты при наведении */
+.flip-card:hover .flip-card-front {
+    box-shadow: 0 25px 60px rgba(52, 152, 219, 0.2);
+}
+
+.flip-card:hover .flip-card-back {
+    box-shadow: 0 25px 60px rgba(41, 128, 185, 0.4);
+}
+
+/* Дополнительные эффекты */
+.flip-card-front::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent, rgba(52, 152, 219, 0.05), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 20px;
+}
+
+.flip-card:hover .flip-card-front::before {
+    opacity: 1;
+}
+
+/* ============================================================================
+   БЛОК 5: ОПЫТ РАБОТЫ
+   ============================================================================ */
+
+.experience {
+    padding: 100px 0;
+    background: linear-gradient(135deg, rgba(248, 250, 252, 0.5), rgba(241, 245, 249, 0.7));
+}
+
+.experience__content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.experience__timeline h2 {
+    text-align: left;
+    margin-bottom: 3rem;
+}
+
+.work-timeline {
+    position: relative;
+}
+
+.work-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, #3498db, #87ceeb);
+    border-radius: 2px;
+}
+
+.work-timeline__item {
+    position: relative;
+    padding-left: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.work-timeline__item::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 0;
+    width: 15px;
+    height: 15px;
+    background: #3498db;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.2);
+}
+
+.work-timeline__date {
+    font-size: 0.95rem;
+    color: #3498db;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.work-timeline__content h3 {
+    font-size: 1.4rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.work-timeline__company {
+    color: #5a6c7d;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.work-timeline__achievements {
+    list-style: none;
+    padding: 0;
+}
+
+.work-timeline__achievements li {
+    color: #5a6c7d;
+    margin-bottom: 0.5rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.work-timeline__achievements li::before {
+    content: '•';
+    color: #3498db;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.experience__image {
+    width: 100%;
+    height: 400px;
+    border-radius: 15px;
+    object-fit: cover;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================================================
+   БЛОК 6: ПОРТФОЛИО
+   ============================================================================ */
+
+.portfolio {
+    padding: 100px 0;
+    background: #ffffff;
+}
+
+.portfolio__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 2.5rem;
+    perspective: 1000px;
+}
+
+.portfolio-card {
+    background: linear-gradient(145deg, #ffffff, #f8fafc);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.08),
+        0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(52, 152, 219, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.portfolio-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 20px 50px rgba(52, 152, 219, 0.15),
+        0 5px 15px rgba(0, 0, 0, 0.1);
+    border-color: rgba(52, 152, 219, 0.2);
+}
+
+.portfolio-card:hover .portfolio-card__title {
+    color: #3498db;
+}
+
+.portfolio-card__image {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.card-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.portfolio-card__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.portfolio-card:hover .portfolio-card__overlay {
+    opacity: 1;
+}
+
+.portfolio-card:hover .card-preview {
+    transform: scale(1.1);
+}
+
+.portfolio-card__overlay .portfolio-card__icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.portfolio-card__view-btn {
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+    background: rgba(52, 152, 219, 0.9);
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.portfolio-card__view-btn:hover {
+    background: rgba(52, 152, 219, 1);
+    transform: scale(1.05);
+}
+
+.portfolio-card__content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.portfolio-card__title {
+    font-size: 1.3rem;
+    color: #2c3e50;
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+    transition: color 0.3s ease;
+    line-height: 1.3;
+}
+
+.portfolio-card__description {
+    color: #64748b;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+.portfolio-card__counter {
+    background: rgba(52, 152, 219, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #3498db;
+    text-align: center;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.slider-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    transform: scale(1.1);
+}
+
+.slider-image.active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Overlay градиент для лучшей читаемости */
+.portfolio-card__slider::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        transparent 60%,
+        rgba(0, 0, 0, 0.1) 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.portfolio-card:hover .portfolio-card__slider::before {
+    opacity: 0.7;
+}
+
+/* Эффект увеличения изображения при наведении */
+.portfolio-card:hover .slider-image.active {
+    transform: scale(1.08);
+}
+
+/* Добавим индикатор количества изображений */
+.portfolio-card__counter {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #2c3e50;
+    z-index: 3;
+    transition: all 0.3s ease;
+}
+
+.portfolio-card:hover .portfolio-card__counter {
+    background: rgba(52, 152, 219, 0.9);
+    color: white;
+    transform: scale(1.1);
+}
+
+/* Анимация пульсации при клике */
+@keyframes cardPulse {
+    0% { 
+        transform: translateY(-15px) scale(1.05);
+    }
+    50% { 
+        transform: translateY(-15px) scale(1.08);
+        box-shadow: 0 40px 90px rgba(52, 152, 219, 0.4);
+    }
+    100% { 
+        transform: translateY(-15px) scale(1.05);
+    }
+}
+
+/* Дополнительные эффекты для изображений */
+.slider-image {
+    filter: brightness(0.95) contrast(1.05);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.portfolio-card:hover .slider-image {
+    filter: brightness(1) contrast(1.1);
+}
+
+.portfolio-card:hover .portfolio-card__icon {
+    transform: scale(1.1) rotateY(10deg);
+    filter: drop-shadow(0 10px 20px rgba(52, 152, 219, 0.3));
+}
+
+.portfolio-card:hover .portfolio-card__counter {
+    background: rgba(52, 152, 219, 0.9);
+    color: white;
+    transform: scale(1.1);
+}
+
+.portfolio-card:hover .portfolio-card__cta {
+    color: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* ============================================================================
+   ПОЛНОЭКРАННАЯ ГАЛЕРЕЯ
+   ============================================================================ */
+
+.gallery-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.gallery-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.gallery-modal__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+}
+
+.gallery-modal__container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.gallery-modal__close {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    backdrop-filter: blur(15px);
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: white;
+    font-size: 1.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 10001;
+    box-shadow: 
+        0 10px 30px rgba(231, 76, 60, 0.4),
+        0 5px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gallery-modal__close:hover {
+    background: linear-gradient(135deg, #c0392b, #a93226);
+    transform: scale(1.15);
+    box-shadow: 
+        0 15px 40px rgba(231, 76, 60, 0.6),
+        0 8px 20px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.gallery-modal__close:active {
+    transform: scale(1.05);
+}
+
+.gallery-modal__close span {
+    line-height: 1;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-modal__content {
+    position: relative;
+    max-width: 90%;
+    max-height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gallery-modal__image-container {
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.gallery-modal__image {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 15px;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s ease;
+}
+
+.gallery-modal__counter {
+    position: absolute;
+    bottom: -3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.gallery-modal__nav {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    backdrop-filter: blur(15px);
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 10001;
+    box-shadow: 
+        0 10px 30px rgba(52, 152, 219, 0.4),
+        0 5px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gallery-modal__nav:hover {
+    background: linear-gradient(135deg, #2980b9, #1e6091);
+    transform: translateY(-50%) scale(1.15);
+    box-shadow: 
+        0 15px 40px rgba(52, 152, 219, 0.6),
+        0 8px 20px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.gallery-modal__nav:active {
+    transform: translateY(-50%) scale(1.05);
+}
+
+.gallery-modal__nav--prev {
+    left: 1rem;
+}
+
+.gallery-modal__nav--next {
+    right: 1rem;
+}
+
+/* Специальные стили для стрелок */
+.gallery-modal__nav span {
+    line-height: 1;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.gallery-modal__info {
+    margin-top: 2rem;
+    text-align: center;
+    color: white;
+    max-width: 600px;
+}
+
+.gallery-modal__title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.gallery-modal__description {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+}
+
+/* Адаптивность галереи */
+@media (max-width: 768px) {
+    .gallery-modal__container {
+        padding: 1rem;
+    }
+    
+    .gallery-modal__close {
+        top: 1rem;
+        right: 1rem;
+        width: 50px;
+        height: 50px;
+        font-size: 1.4rem;
+    }
+    
+    .gallery-modal__nav {
+        width: 60px;
+        height: 60px;
+        font-size: 2rem;
+    }
+    
+    .gallery-modal__nav--prev {
+        left: 0.5rem;
+    }
+    
+    .gallery-modal__nav--next {
+        right: 0.5rem;
+    }
+    
+    .gallery-modal__image {
+        max-height: 70vh;
+    }
+    
+    .gallery-modal__title {
+        font-size: 1.5rem;
+    }
+    
+    .gallery-modal__description {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-modal__content {
+        max-width: 95%;
+    }
+    
+    .gallery-modal__image {
+        max-height: 60vh;
+    }
+    
+    .gallery-modal__info {
+        margin-top: 1rem;
+        padding: 0 1rem;
+    }
+    
+    .gallery-modal__close {
+        top: 0.5rem;
+        right: 0.5rem;
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+    
+    .gallery-modal__nav {
+        width: 55px;
+        height: 55px;
+        font-size: 1.8rem;
+    }
+    
+    .gallery-modal__nav--prev {
+        left: 0.2rem;
+    }
+    
+    .gallery-modal__nav--next {
+        right: 0.2rem;
+    }
+}
+
+/* ============================================================================
+   БЛОК 7: ОБРАЗОВАНИЕ
+   ============================================================================ */
+
+.education {
+    padding: 50px 20px;
+    background-image: url("О6.jpg");
+    background-size: contain;
+}
+
+.education__content {
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+.education__item {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(52, 152, 219, 0.1);
+}
+
+.education__year {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #3498db;
+    min-width: 80px;
+    flex-shrink: 0;
+}
+
+.education__info h3 {
+    font-size: 1.3rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.education__info p {
+    color: #5a6c7d;
+    line-height: 1.6;
+}
+
+/* ============================================================================
+   БЛОК 8: КОНТАКТЫ
+   ============================================================================ */
+
+.contacts {
+    padding: 100px 0;
+    background: #ffffff;
+}
+
+.contacts__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.contacts__links {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem;
+    background: linear-gradient(135deg, rgba(248, 250, 252, 0.8), rgba(241, 245, 249, 0.9));
+    border-radius: 12px;
+    text-decoration: none;
+    color: #5a6c7d;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(52, 152, 219, 0.1);
+}
+
+.contact-item:hover {
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(135, 206, 235, 0.1));
+    transform: translateX(5px);
+    border-color: rgba(52, 152, 219, 0.2);
+}
+
+.contact-item__icon {
+    font-size: 1.5rem;
+}
+
+.contact-item__text {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.contact-form {
+    background: linear-gradient(135deg, rgba(248, 250, 252, 0.8), rgba(241, 245, 249, 0.9));
+    padding: 2.5rem;
+    border-radius: 15px;
+    border: 1px solid rgba(52, 152, 219, 0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    border: 2px solid rgba(52, 152, 219, 0.1);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    background: white;
+    color: #2c3e50;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* ============================================================================
+   АДАПТИВНОСТЬ
+   ============================================================================ */
+
+@media (max-width: 1024px) {
+    .hero .container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 3rem;
+    }
+    
+    .hero__content {
+        padding-left: 0;
+    }
+    
+    .about__content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+        max-width: 800px;
+    }
+    
+    .about__text {
+        order: 2;
+    }
+    
+    .about__photo {
+        order: 1;
+    }
+    
+    .experience__content {
+        grid-template-columns: 1fr;
+    }
+    
+    .contacts__content {
+        grid-template-columns: 1fr;
+    }
+    
+    .flip-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .hero {
+        padding: 60px 0;
+    }
+    
+    .hero__name {
+        font-size: 2.2rem;
+    }
+    
+    .hero__image {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .skills__grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .portfolio__grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .education__item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .work-timeline__item {
+        padding-left: 2rem;
+    }
+    
+    .about__content {
+        max-width: 100%;
+        gap: 1.5rem;
+    }
+    
+    .about__text p {
+        font-size: 1rem;
+    }
+    
+    .flip-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .flip-card {
+        height: 260px;
+    }
+    
+    .flip-card-front, .flip-card-back {
+        padding: 1.5rem;
+    }
+    
+    .flip-card__icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+    
+    .flip-card__title {
+        font-size: 1.2rem;
+    }
+    
+    .flip-card-back h3 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .flip-card-back p {
+        font-size: 0.85rem;
+        line-height: 1.4;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero__name {
+        font-size: 1.8rem;
+    }
+    
+    .hero__image {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .skill-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .contact-form {
+        padding: 2rem 1.5rem;
+    }
+}
